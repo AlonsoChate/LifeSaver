@@ -9,7 +9,7 @@ VE441 group project source
 ## APIs and Controller
 
 ## View UI/UX
-(blank for now)
+> blank for now
 
 ## Team Roster
 | Team Member | Contribution |
