@@ -10,11 +10,11 @@ VE441 group project source
 - [OpenCV4Android](https://docs.opencv.org/3.4/d9/d3f/tutorial_android_dev_intro.html)
 - [OkHttp](https://github.com/square/okhttp)
 ### Back-end dependencies
--[Python 3.8](https://www.python.org/downloads/)
--[PostgreSQL (Latest Version)](https://www.postgresql.org/docs/current/index.html)
--[Nginx (Latest Version)](https://nginx.org/en/docs/install.html)
--[Django 3.1.3](https://pypi.org/project/Django/)
--[Gunicorn (Latest Version)](https://pypi.org/project/gunicorn/)
+- [Python 3.8](https://www.python.org/downloads/)
+- [PostgreSQL (Latest Version)](https://www.postgresql.org/docs/current/index.html)
+- [Nginx (Latest Version)](https://nginx.org/en/docs/install.html)
+- [Django 3.1.3](https://pypi.org/project/Django/)
+- [Gunicorn (Latest Version)](https://pypi.org/project/gunicorn/)
 
 ## Model and Engine
 
