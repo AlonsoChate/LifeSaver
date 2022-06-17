@@ -17,21 +17,18 @@ VE441 group project source
 - [Gunicorn (Latest Version)](https://pypi.org/project/gunicorn/)
 
 ## Model and Engine
-## Storymap
-![Storymap figure1](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/Storymap1.png)
-![Storymap figure2](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/Storymap2.png)
-
-## Engine Architecture
-![Engine Architecture](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/EngineArchitecture.png)
-
-- Front end
-- Main
-- AR Handler
-- ARCore
-- Map Handler
-- DB
 
 ## APIs and Controller
+- Front End and Back End, using Okhttp
+  - Send user profile and location
+  - Retrieve several nearest AED locations
+- Front End and Baidu Map, using Baidu Map API
+  - Send user location and AED locations
+  - Retrieve the route and displayable map
+- Front End and Position Sensors, using [in-built Android API](https://developer.android.com/guide/topics/sensors/sensors_position)
+  - Retrieve the device's orientation
+- Front End and AR Module, using Google ARCore
+  - ???
 
 ## View UI/UX
 > blank for now
