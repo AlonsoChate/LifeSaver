@@ -24,12 +24,7 @@ VE441 group project source
 ## Engine Architecture
 ![Engine Architecture](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/EngineArchitecture.png)
 
-- Front end
-- Main
-- AR Handler
-- ARCore
-- Map Handler
-- DB
+While users click any button in the front end, the Main Activity will be activated. Based on the different action by users, Main Activity make requests to different handlers. If the request is to show an AR CPR, Main Activity will activate AR Handler and AR Handler will make requests to AR Core to retrieve response. If the request is to navigate, Main Activity will first make requests to Back End to retrieve AED locations from DB and second activate Map Handler to make requests to Baidu Map API to retrieve the route. 
 
 ## APIs and Controller
 - Front End and Back End, using Okhttp
@@ -41,7 +36,6 @@ VE441 group project source
 - Front End and Position Sensors, using [in-built Android API](https://developer.android.com/guide/topics/sensors/sensors_position)
   - Retrieve the device's orientation
 - Front End and AR Module, using Google ARCore
-  - ???
 
 ### Endpoint: `GET /lifesaver/`
 
