@@ -17,6 +17,19 @@ VE441 group project source
 - [Gunicorn (Latest Version)](https://pypi.org/project/gunicorn/)
 
 ## Model and Engine
+## Storymap
+![Storymap figure1](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/Storymap1.png)
+![Storymap figure2](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/Storymap2.png)
+
+## Engine Architecture
+![Engine Architecture](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/EngineArchitecture.png)
+
+- Front end
+- Main
+- AR Handler
+- ARCore
+- Map Handler
+- DB
 
 ## APIs and Controller
 - Front End and Back End, using Okhttp
