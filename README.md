@@ -17,6 +17,17 @@ VE441 group project source
 - [Gunicorn (Latest Version)](https://pypi.org/project/gunicorn/)
 
 ## Model and Engine
+## Storymap
+
+
+## Engine Architecture
+
+- Front end
+- Main
+- AR Handler
+- ARCore
+- Map Handler
+- DB
 
 ## APIs and Controller
 
