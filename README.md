@@ -25,11 +25,22 @@ VE441 group project source
 ![Engine Architecture](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/EngineArchitecture.png)
 
 - Front end
+
 - Main
+
 - AR Handler
+
 - ARCore
+
+  ARCore 
+
 - Map Handler
+
+  The map handler directly deals with the BaiduMap API, which feeds user location into API and receive the navigation information.
+
 - DB
+
+  The DB (database) is used for storing `user profiles` and `AED locations`. `user profiles` include users' personal health conditions, emergency contacts, and personal information. `AED locations` are stored in the form API requires.
 
 ## APIs and Controller
 - Front End and Back End, using Okhttp
