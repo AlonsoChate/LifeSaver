@@ -43,6 +43,30 @@ VE441 group project source
 - Front End and AR Module, using Google ARCore
   - ???
 
+Endpoint: `GET /lifesaver/`
+
+**Request Parameters**
+| Key  | Location | Type  |Description  |
+| :--- | :--- | :---  | :--- |
+| username | Session Cookie | String | Current user | 
+| password | Session Cookie | String | hash of password | 
+| userinfo | JSON | List of dictionary | Lisf of user info with keys and values |
+| location  | JSON |  | GPS location info |
+
+**Response Codes**
+| Code  | Description |
+| :--- | :--- |
+| `200 OK` | Success |
+| `400 Bad ` | Invalid parameters |
+
+**Returns**
+
+*If requested without userinfo*
+
+*For requests with userinfo*
+
+
+
 ## View UI/UX
 > blank for now
 
