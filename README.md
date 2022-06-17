@@ -43,7 +43,7 @@ VE441 group project source
 - Front End and AR Module, using Google ARCore
   - ???
 
-Endpoint: `GET /lifesaver/`
+### Endpoint: `GET /lifesaver/`
 
 **Request Parameters**
 | Key  | Location | Type  |Description  |
@@ -60,10 +60,9 @@ Endpoint: `GET /lifesaver/`
 | `400 Bad ` | Invalid parameters |
 
 **Returns**
-
-*If requested without userinfo*
-
-*For requests with userinfo*
+| Key  | Location | Type  |Description  |
+| :--- | :--- | :---  | :--- |
+| AEDinfo | JSON | list of dictionary | Detail info of nearby AEDs including location, appearence(photo), maintanance, etc | 
 
 
 
