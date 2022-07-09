@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VE441_LifeSaver_Draft</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_cpractivity">CPRActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+</resources>
