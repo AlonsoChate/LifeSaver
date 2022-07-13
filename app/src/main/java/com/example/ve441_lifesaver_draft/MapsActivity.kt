@@ -1,20 +1,30 @@
 package com.example.ve441_lifesaver_draft
 
 import android.annotation.SuppressLint
-import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
+import com.example.ve441_lifesaver_draft.BuildConfig.MAPS_API_KEY
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.ve441_lifesaver_draft.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.*
+import okhttp3.*
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.IOException
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+    private var start = LatLng(42.293, -83.716) // BBB
+    private var end = LatLng(42.281, -83.738) // Rackham
+
+    private val client = OkHttpClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +75,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15F))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(annArbor))
 
-
+        getRoute()
     }
 
 //    override fun onMyLocationClick(location: Location) {
@@ -81,4 +91,53 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 //        return false
 //    }
 
+    // https://developers.google.com/maps/documentation/directions/get-directions
+
+    private fun getDirectionUrl(): String{
+        // origin and destination
+        val origin = "origin=" + start.latitude + "," + start.longitude
+        val dest = "destination=" + end.latitude + "," + end.longitude
+        val sensor = "sensor=false"
+
+        // driving mode or walking mode
+        val mode = "mode=driving"
+        val key = "key=$MAPS_API_KEY"
+        val para = "$origin&$dest&$sensor&$mode&$key"
+
+        // output format, xml or json
+        val output = "json"
+        val url: String = "https://maps.googleapis.com/maps/api/directions/$output?$para"
+
+        println("getDirectionUrl---> $url")
+        return url
+    }
+
+
+    private fun getRoute(){
+        val request = Request.Builder()
+            .url(getDirectionUrl())
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("getRoute", "Failed api request")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    var jRoutes : JSONArray? = null
+                    var jLegs : JSONArray? = null
+                    var jSteps : JSONArray? = null
+
+                    jRoutes = try { JSONObject(response.body?.string() ?: "")
+                        .getJSONArray("routes") } catch (e: JSONException) { JSONArray() }
+
+
+//                    for (i in 0 until jRoutes.length()) {
+//                        jLegs =
+//                    }
+                }
+            }
+        })
+    }
 }
