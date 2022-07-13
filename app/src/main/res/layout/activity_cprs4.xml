@@ -2,13 +2,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/CPR_id"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CPRs1Activity">
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/CPR_Guide_id4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
+        android:text="4"
+        android:textColor="#5B3BF5"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHome2" />
 
     <Button
-        android:id="@+id/buttonHome"
+        android:id="@+id/buttonHome2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -19,38 +30,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttons1Tos2"
+        android:id="@+id/buttons4Tos3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="250dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="650dp"
-        android:onClick="nextPage"
-        android:text="Next Step"
+        android:onClick="prevPage"
+        android:text="Previous Step"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewCPRs1"
+        android:id="@+id/textViewCPRs3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="60dp"
-        android:text="CHECK the surrounding and patient’s conditions.\n\nCALL 911 and get equipment.\n\nPlace the person on their back on a firm, flat surface."
+        android:text="Repeat Step 2 and 3.\n\n(If need help in chest compression, please go back to 2!)"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/CPR_Guide_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
-        android:text="1"
-        android:textColor="#5B3BF5"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonHome" />
 </androidx.constraintlayout.widget.ConstraintLayout>
