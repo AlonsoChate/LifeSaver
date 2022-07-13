@@ -1,15 +1,15 @@
 package com.example.ve441_lifesaver_draft
 
+import android.annotation.SuppressLint
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.ve441_lifesaver_draft.databinding.ActivityMapsBinding
+import com.google.android.gms.maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -37,12 +37,48 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        // set to Hybrid
+        GoogleMapOptions().mapType(GoogleMap.MAP_TYPE_HYBRID)
+
+        // enable location layer
+        mMap.isMyLocationEnabled = true
+
+//        mMap.setOnMyLocationButtonClickListener(this)
+//        mMap.setOnMyLocationClickListener(this)
+
+
+        with(mMap.uiSettings){
+            isCompassEnabled = true
+            isZoomControlsEnabled = true
+            isZoomGesturesEnabled = true
+        }
+
+        // Add a marker and move the camera
+        val annArbor = LatLng(42.28, -83.74)
+
+        mMap.addMarker(MarkerOptions().position(annArbor).title("Marker in Ann Arbor"))
+        // zoom in closer and move camera
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(15F))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(annArbor))
+
+
     }
+
+//    override fun onMyLocationClick(location: Location) {
+//        Toast.makeText(this, "Current location:\n$location", Toast.LENGTH_LONG)
+//            .show()
+//    }
+//
+//    override fun onMyLocationButtonClick(): Boolean {
+//        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT)
+//            .show()
+//        // Return false so that we don't consume the event and the default behavior still occurs
+//        // (the camera animates to the user's current position).
+//        return false
+//    }
+
 }
