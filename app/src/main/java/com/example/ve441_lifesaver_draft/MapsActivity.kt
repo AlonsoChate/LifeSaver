@@ -53,7 +53,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-//    @SuppressLint("MissingPermission")
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
@@ -61,7 +61,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         GoogleMapOptions().mapType(GoogleMap.MAP_TYPE_HYBRID)
 
         // enable location layer
-//        mMap.isMyLocationEnabled = true
+        mMap.isMyLocationEnabled = true
 
 //        mMap.setOnMyLocationButtonClickListener(this)
 //        mMap.setOnMyLocationClickListener(this)
@@ -170,6 +170,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         route.add(LatLng(point.getDouble("lat"), point.getDouble("lng")))
                     }
                 }
+                println("Debug ------> response end")
             }
         })
         println("Debug----> getRoute ends")
@@ -179,12 +180,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun getPoly(){
         println("Debug---> getPoly")
         var lineOptions = PolylineOptions()
-        val r = route
-        lineOptions.addAll(r)
+        lineOptions.addAll(route)
         lineOptions
             .width(3F)
             .color(Color.BLUE)
         mMap.addPolyline(lineOptions)
-    }
 
+        mMap.addMarker(MarkerOptions().position(start).title("Destination"))
+        mMap.addMarker(MarkerOptions().position(end).title("Destination"))
+    }
 }
