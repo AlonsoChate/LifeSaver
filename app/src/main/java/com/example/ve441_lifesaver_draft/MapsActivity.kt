@@ -1,6 +1,7 @@
 package com.example.ve441_lifesaver_draft
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.ve441_lifesaver_draft.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.PolylineOptions
 import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -21,8 +23,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
+    // route parameters
     private var start = LatLng(42.293, -83.716) // BBB
     private var end = LatLng(42.281, -83.738) // Rackham
+
+    private var route = ArrayList<LatLng>()
 
     private val client = OkHttpClient()
 
@@ -68,14 +73,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         // Add a marker and move the camera
-        val annArbor = LatLng(42.28, -83.74)
+//        val annArbor = LatLng(42.28, -83.74)
+//
+//        mMap.addMarker(MarkerOptions().position(annArbor).title("Marker in Ann Arbor"))
+//        // zoom in closer and move camera
+//        mMap.moveCamera(CameraUpdateFactory.zoomTo(15F))
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(annArbor))
 
-        mMap.addMarker(MarkerOptions().position(annArbor).title("Marker in Ann Arbor"))
+
+        mMap.addMarker(MarkerOptions().position(start).title("Marker in BBB"))
         // zoom in closer and move camera
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15F))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(annArbor))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(start))
 
         getRoute()
+        getPoly()
     }
 
 //    override fun onMyLocationClick(location: Location) {
@@ -129,15 +141,39 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     var jLegs : JSONArray? = null
                     var jSteps : JSONArray? = null
 
+                    // get routes
                     jRoutes = try { JSONObject(response.body?.string() ?: "")
                         .getJSONArray("routes") } catch (e: JSONException) { JSONArray() }
 
+                    // prepare for add route
+                    route.clear()
 
-//                    for (i in 0 until jRoutes.length()) {
-//                        jLegs =
-//                    }
+                    jLegs = JSONObject(jRoutes!![0].toString()?:"").getJSONArray("legs")
+                    jSteps = JSONObject(jLegs!![0].toString()?:"").getJSONArray("steps")
+
+                    // start location
+                    var stepEntry = jSteps[0] as JSONObject
+                    var point = stepEntry.getJSONObject("start_location")
+                    route.add(LatLng(point.getDouble("lat"), point.getDouble("lng")))
+
+                    for (i in 0 until  jSteps!!.length()){
+                        stepEntry = jSteps[i] as JSONObject
+                        point = stepEntry.getJSONObject("end_location")
+                        route.add(LatLng(point.getDouble("lat"), point.getDouble("lng")))
+                    }
                 }
             }
         })
     }
+
+
+    private fun getPoly(){
+        var lineOptions = PolylineOptions()
+        lineOptions.addAll(route)
+        lineOptions
+            .width(3F)
+            .color(Color.BLUE)
+        mMap.addPolyline(lineOptions)
+    }
+
 }
