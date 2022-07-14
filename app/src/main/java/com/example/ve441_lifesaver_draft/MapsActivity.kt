@@ -187,6 +187,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addPolyline(lineOptions)
 
         mMap.addMarker(MarkerOptions().position(start).title("Destination"))
-        mMap.addMarker(MarkerOptions().position(end).title("Destination"))
+//        mMap.addMarker(MarkerOptions().position(end).title("Destination"))
     }
 }
