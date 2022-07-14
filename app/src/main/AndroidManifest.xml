@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ve441_lifesaver_draft">
 
+<!--    user location permission-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,8 +18,9 @@
         android:theme="@style/Theme.VE441_LifeSaver_Draft"
         tools:targetApi="31">
         <activity
-            android:name=".CPRs4Activity"
-            android:exported="false" />
+            android:name=".MapTest"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CPRs3Activity"
             android:exported="false" />
@@ -24,13 +29,12 @@
             android:exported="false" />
         <activity
             android:name=".CPRs1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".CPRActivity"
-            android:exported="false"
-            android:label="@string/title_activity_cpractivity"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.VE441_LifeSaver_Draft.NoActionBar" />
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".CPRActivity" -->
+        <!-- android:exported="false" -->
+        <!-- android:label="@string/title_activity_cpractivity" -->
+        <!-- android:parentActivityName=".MainActivity" -->
+        <!-- android:theme="@style/Theme.VE441_LifeSaver_Draft.NoActionBar" /> -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -61,5 +65,4 @@
             android:label="@string/title_activity_maps"
             android:parentActivityName=".MainActivity" />
     </application>
-
 </manifest>
