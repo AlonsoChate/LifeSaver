@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import com.example.ve441_lifesaver_draft.BuildConfig.MAPS_API_KEY
 
 import com.google.android.gms.maps.model.LatLng
@@ -52,7 +53,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    @SuppressLint("MissingPermission")
+//    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
@@ -60,7 +61,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         GoogleMapOptions().mapType(GoogleMap.MAP_TYPE_HYBRID)
 
         // enable location layer
-        mMap.isMyLocationEnabled = true
+//        mMap.isMyLocationEnabled = true
 
 //        mMap.setOnMyLocationButtonClickListener(this)
 //        mMap.setOnMyLocationClickListener(this)
@@ -87,7 +88,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(start))
 
         getRoute()
-        getPoly()
+
+        val getRouteButton = findViewById<Button>(R.id.buttonMapAction)
+        getRouteButton.setOnClickListener{
+            println("Debug---------> Click get route")
+//            getRoute()
+            getPoly()
+        }
     }
 
 //    override fun onMyLocationClick(location: Location) {
@@ -126,6 +133,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     private fun getRoute(){
+        println("Debug------> getRoute start")
         val request = Request.Builder()
             .url(getDirectionUrl())
             .build()
@@ -164,12 +172,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
         })
+        println("Debug----> getRoute ends")
     }
 
 
     private fun getPoly(){
+        println("Debug---> getPoly")
         var lineOptions = PolylineOptions()
-        lineOptions.addAll(route)
+        val r = route
+        lineOptions.addAll(r)
         lineOptions
             .width(3F)
             .color(Color.BLUE)
