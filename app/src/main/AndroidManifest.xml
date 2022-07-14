@@ -65,5 +65,4 @@
             android:label="@string/title_activity_maps"
             android:parentActivityName=".MainActivity" />
     </application>
-
 </manifest>

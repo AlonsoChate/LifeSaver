@@ -5,6 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CPRs2Activity">
+
+    <TextView
+        android:id="@+id/CPR_Guide_id3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
+        android:text="2"
+        android:textColor="#5B3BF5"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHome" />
+
     <Button
         android:id="@+id/buttonHome"
         android:layout_width="wrap_content"
@@ -15,16 +28,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Home" />
+
     <Button
         android:id="@+id/buttons2Tos3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="nextPage"
         android:layout_marginStart="250dp"
         android:layout_marginTop="650dp"
+        android:onClick="nextPage"
+        android:text="Next Step"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Next Step" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttons2Tos1"
@@ -39,11 +53,42 @@
 
     <TextView
         android:id="@+id/textViewCPRs2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="CPR Step 2"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="350dp"
+        android:layout_marginEnd="30dp"
+        android:text="Give 30 chest compressions: \n● Depth: >= 2 inches \n● Rate: 100~120/min \nAllow chest to return to normal position after each compression"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewCPR2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHome"
+        app:srcCompat="@drawable/cpr_2" />
+
+    <ImageButton
+        android:id="@+id/imageButton_AR"
+        android:layout_width="76dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="false"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="AR Aid"
+        android:cropToPadding="false"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        app:tint="#000000" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

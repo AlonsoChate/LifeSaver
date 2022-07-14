@@ -24,7 +24,7 @@
       android:layout_marginStart="148dp"
       android:layout_marginTop="40dp"
       android:onClick="visitCPR"
-      android:text="CPR Maps"
+      android:text="CPR Guides"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/buttonMap" />
 

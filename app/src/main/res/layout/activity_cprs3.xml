@@ -5,6 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CPRs3Activity">
+
+    <Button
+        android:id="@+id/buttons3Tos4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="650dp"
+        android:onClick="nextPage"
+        android:text="Next Step"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2CPR3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHome"
+        app:srcCompat="@drawable/cpr_3" />
+
+    <TextView
+        android:id="@+id/CPR_Guide_id2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
+        android:text="3"
+        android:textColor="#5B3BF5"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHome" />
+
     <Button
         android:id="@+id/buttonHome"
         android:layout_width="wrap_content"
@@ -25,13 +59,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Previous Step" />
+
     <TextView
-        android:id="@+id/textViewCPRs3"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewCPRs"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="CPR Step 3"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="364dp"
+        android:layout_marginEnd="60dp"
+        android:text="Give 2 breaths, each for 1 second:  Open the airway using the head-tilt/chin-lift technique  Allow air to exit before giving the next breath "
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
