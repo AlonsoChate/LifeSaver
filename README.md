@@ -61,7 +61,10 @@ While users click any button in the front end, the Main Activity will be activat
 
 
 ## View UI/UX
-> blank for now
+![UIUX Flow](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiuxflow.png)
+![UIUX-Navigation](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_navigation.png)
+![UIUX-CPR Guide](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_cpr.png)
+![UIUX Justification](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_justification.png)
 
 ## Team Roster
 | Team Member | Contribution |
