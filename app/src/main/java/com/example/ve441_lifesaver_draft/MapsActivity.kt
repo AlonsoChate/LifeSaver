@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,8 @@ import com.example.ve441_lifesaver_draft.BuildConfig.MAPS_API_KEY
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.ve441_lifesaver_draft.databinding.ActivityMapsBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.PolylineOptions
 import okhttp3.*
@@ -23,7 +26,8 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
+    GoogleMap.OnMyLocationButtonClickListener {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
@@ -34,6 +38,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private var locationPermissionGranted = false
 
+    // useful for get location info
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     private var route = ArrayList<LatLng>()
 
     private val client = OkHttpClient()
@@ -43,6 +50,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -71,8 +80,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // enable location layer
         mMap.isMyLocationEnabled = true
+        mMap.setOnMyLocationButtonClickListener(this)
 
-//        mMap.setOnMyLocationButtonClickListener(this)
+
 //        mMap.setOnMyLocationClickListener(this)
 
 
@@ -82,26 +92,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             isZoomGesturesEnabled = true
         }
 
-        // Add a marker and move the camera
-//        val annArbor = LatLng(42.28, -83.74)
-//
-//        mMap.addMarker(MarkerOptions().position(annArbor).title("Marker in Ann Arbor"))
-//        // zoom in closer and move camera
-//        mMap.moveCamera(CameraUpdateFactory.zoomTo(15F))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(annArbor))
 
-
+        // add a marker at default start position
         mMap.addMarker(MarkerOptions().position(start).title("Marker in BBB"))
-        // zoom in closer and move camera
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(15F))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(start))
 
-        getRoute()
+        // zoom in closer and move camera
+        updateMapLocation(start)
+
+//        getRoute()
 
         val getRouteButton = findViewById<Button>(R.id.buttonMapAction)
         getRouteButton.setOnClickListener{
             println("Debug---------> Click get route")
-//            getRoute()
+            getRoute()
             getPoly()
         }
     }
@@ -202,7 +205,43 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .color(Color.BLUE)
         mMap.addPolyline(lineOptions)
 
-        mMap.addMarker(MarkerOptions().position(start).title("Destination"))
-//        mMap.addMarker(MarkerOptions().position(end).title("Destination"))
+        mMap.addMarker(MarkerOptions().position(start).title("Origin"))
+        mMap.addMarker(MarkerOptions().position(end).title("Destination"))
     }
+
+
+    // triggered when my location button is clicked
+    // update $start to current location
+    @SuppressLint("MissingPermission")
+    override fun onMyLocationButtonClick(): Boolean {
+        // get current location
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                updateMapLocation(location)
+                start = LatLng(location!!.latitude, location!!.longitude)
+            }
+        println("Debug ------> My location button clicked")
+        println("Debug ------> set start location as $start")
+        return false
+    }
+
+    // https://medium.com/@paultr/google-maps-for-android-pt-2-user-location-f7416966aa67
+    // TODO: Try to continuously update location
+
+    // move camera to specific location (latLng)
+    private fun updateMapLocation(location: Location?) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(
+            location?.latitude ?: 0.0,
+            location?.longitude ?: 0.0)))
+
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(15.0f))
+    }
+
+
+    private fun updateMapLocation(coordinate: LatLng?) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinate))
+
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(15.0f))
+    }
+
 }
