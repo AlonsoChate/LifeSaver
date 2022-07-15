@@ -66,9 +66,17 @@ While users click any button in the front end, the Main Activity will be activat
 ## Team Roster
 | Team Member | Contribution |
 | :--- | :--- |
-| Jiaai Xu    |  | 
-| Kehan Chen  |  |
-| Lan Zhang   |  |
+| Jiaai Xu    |  | App construction, add google Maps API
+| Kehan Chen  |  | Add CPR guide
+| Lan Zhang   |  | Display route function, app construction, add google Maps API
 | Wanying Ji  |  |
-| Yiteng Cai  |  |
-| Yuyuan Ji   |  |
+| Yiteng Cai  |  | Add AED database, display route function
+| Yuyuan Ji   |  | App construction, add google Maps API
+
+## Individual Contribution
+Jiaai Xu: Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.
+Yuyuan Ji: Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.
+Lan Zhang: Complete the display of route function. Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.
+Yiteng Cai: Add the AED location to database. Complete the display of route function.
+Kehan Chen: Add the CPR text and image guide.
+PS. Since we have offline meetings, we sometimes use only one team member's labtop to develop the final product. So some of the members may not have the git commit repos to the code.
