@@ -4,7 +4,11 @@ VE441 group project source
 ## Documentation
 > link to all 3rd-party tools, libraries, SDKs, APIs
 ### Front-end dependencies
-- [Baidu map](https://lbsyun.baidu.com/index.php?title=androidsdk)
+- [Google Maps](https://developers.google.com/maps/documentation)\
+  To activate google maps api, you need to add a key to your local.properties. This key need to be deleted when we launch the project.
+  ```
+  MAPS_API_KEY=AIzaSyAed11pVL9JPm-0TXGhHChmV6TcyXeyEJo
+  ```
 - [Google ARCore](https://developers.google.com/ar/develop?hl=zh-cn)
 - [EastAR](https://www.easyar.com/view/support.html)
 - [OpenCV4Android](https://docs.opencv.org/3.4/d9/d3f/tutorial_android_dev_intro.html)
