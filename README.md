@@ -70,7 +70,7 @@ While users click any button in the front end, the Main Activity will be activat
 | Kehan Chen  | Add CPR guide |
 | Lan Zhang   | Display route function, app construction, add google Maps API |
 | Wanying Ji  |  |
-| Yiteng Cai  | Add AED database, display route function |
+| Yiteng Cai  | Configure google map setting. Display route function |
 | Yuyuan Ji   | App construction, add google Maps API |
 
 ## Individual Contribution
