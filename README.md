@@ -74,9 +74,9 @@ While users click any button in the front end, the Main Activity will be activat
 | Yuyuan Ji   | App construction, add google Maps API |
 
 ## Individual Contribution
--Jiaai Xu: Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.\
--Yuyuan Ji: Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.\
--Lan Zhang: Complete the display of route function. Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.\
--Yiteng Cai: Add the AED location to database. Complete the display of route function.\
--Kehan Chen: Add the CPR text and image guide.\
-P.S. Since we have offline meetings, we sometimes use only one team member's labtop to develop the final product. So some of the members may not have the git commit repos to the code.
+**Jiaai Xu**: Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.\
+**Yuyuan Ji**: Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.\
+**Lan Zhang**: Complete the display of route function. Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.\
+**Yiteng Cai**: Add the AED location to database. Complete the display of route function.\
+**Kehan Chen**: Add the CPR text and image guide.\
+**P.S.** Since we have offline meetings, we sometimes use only one team member's labtop to develop the final product. So some of the members may not have the git commit repos to the code.
