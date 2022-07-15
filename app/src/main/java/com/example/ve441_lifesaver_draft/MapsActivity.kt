@@ -1,11 +1,15 @@
 package com.example.ve441_lifesaver_draft
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.ve441_lifesaver_draft.BuildConfig.MAPS_API_KEY
 
 import com.google.android.gms.maps.model.LatLng
@@ -24,9 +28,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
-    // route parameters
+    // route parameters, start also use to store current position
     private var start = LatLng(42.293, -83.716) // BBB
     private var end = LatLng(42.281, -83.738) // Rackham
+
+    private var locationPermissionGranted = false
 
     private var route = ArrayList<LatLng>()
 
@@ -53,9 +59,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    // do not give warning when no permission guaranteed
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+
+        getLocationPermission()
 
         // set to Hybrid
         GoogleMapOptions().mapType(GoogleMap.MAP_TYPE_HYBRID)
@@ -97,18 +106,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-//    override fun onMyLocationClick(location: Location) {
-//        Toast.makeText(this, "Current location:\n$location", Toast.LENGTH_LONG)
-//            .show()
-//    }
-//
-//    override fun onMyLocationButtonClick(): Boolean {
-//        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT)
-//            .show()
-//        // Return false so that we don't consume the event and the default behavior still occurs
-//        // (the camera animates to the user's current position).
-//        return false
-//    }
+    // https://developers.google.com/maps/documentation/android-sdk/current-place-tutorial
+    // TODO: store current location for route
+    // TODO: ask for location permission in app
+    private fun getLocationPermission() {
+        /*
+         * Request location permission, so that we can get the location of the
+         * device. The result of the permission request is handled by a callback,
+         * onRequestPermissionsResult.
+         */
+        if (ContextCompat.checkSelfPermission(this.applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED) {
+            locationPermissionGranted = true
+        } else {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            0)
+            // TODO: let request Code = 0 for now
+        }
+    }
 
     // https://developers.google.com/maps/documentation/directions/get-directions
 
