@@ -36,8 +36,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
     private var start = LatLng(42.293, -83.716) // BBB
     private var end = LatLng(42.281, -83.738) // Rackham
 
-    private var locationPermissionGranted = false
-
     // useful for get location info
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -59,21 +57,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         mapFragment.getMapAsync(this)
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+
     // do not give warning when no permission guaranteed
+    // triggered when map is ready
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        getLocationPermission()
+//        getLocationPermission()
 
         // set to Hybrid
         GoogleMapOptions().mapType(GoogleMap.MAP_TYPE_HYBRID)
@@ -92,45 +83,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
             isZoomGesturesEnabled = true
         }
 
-
         // add a marker at default start position
         mMap.addMarker(MarkerOptions().position(start).title("Marker in BBB"))
 
         // zoom in closer and move camera
         updateMapLocation(start)
 
-//        getRoute()
-
-        val getRouteButton = findViewById<Button>(R.id.buttonMapAction)
+        val getRouteButton = binding.buttonMapAction
         getRouteButton.setOnClickListener{
             println("Debug---------> Click get route")
             getRoute()
-            getPoly()
         }
     }
 
-    // https://developers.google.com/maps/documentation/android-sdk/current-place-tutorial
-    // TODO: store current location for route
-    // TODO: ask for location permission in app
-    private fun getLocationPermission() {
-        /*
-         * Request location permission, so that we can get the location of the
-         * device. The result of the permission request is handled by a callback,
-         * onRequestPermissionsResult.
-         */
-        if (ContextCompat.checkSelfPermission(this.applicationContext,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED) {
-            locationPermissionGranted = true
-        } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-            0)
-            // TODO: let request Code = 0 for now
-        }
-    }
 
     // https://developers.google.com/maps/documentation/directions/get-directions
-
     private fun getDirectionUrl(): String{
         // origin and destination
         val origin = "origin=" + start.latitude + "," + start.longitude
@@ -157,6 +124,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
             .url(getDirectionUrl())
             .build()
 
+        // execute for synchronous
+        // enqueue for synchronous request
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 Log.e("getRoute", "Failed api request")
@@ -189,9 +158,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
                         route.add(LatLng(point.getDouble("lat"), point.getDouble("lng")))
                     }
                 }
+                runOnUiThread{
+                    getPoly()
+                }
                 println("Debug ------> response end")
             }
         })
+
         println("Debug----> getRoute ends")
     }
 
@@ -221,13 +194,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
                 start = LatLng(location!!.latitude, location!!.longitude)
             }
         println("Debug ------> My location button clicked")
-        println("Debug ------> set start location as $start")
+        println("Debug ------> set start location1 as $start")
         return false
     }
+
 
     // https://medium.com/@paultr/google-maps-for-android-pt-2-user-location-f7416966aa67
     // TODO: Try to continuously update location
 
+
+    // helper functions
     // move camera to specific location (latLng)
     private fun updateMapLocation(location: Location?) {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(
@@ -236,8 +212,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
 
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15.0f))
     }
-
-
     private fun updateMapLocation(coordinate: LatLng?) {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinate))
 
