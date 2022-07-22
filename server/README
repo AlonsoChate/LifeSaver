@@ -1,0 +1,13 @@
+server: pi@10.0.0.102
+password: raspberry
+
+database: lifesaver
+table: aeds
+user: saver
+password: saversaver
+
+datatype:{
+	id:		varchar(255)
+	description:	varchar(255)
+	location:	json
+}
