@@ -11,3 +11,12 @@ datatype:{
 	description:	varchar(255)
 	location:	json
 }
+
+getAEDs
+{
+	"AEDs" : [
+		["id0", "description0", "{"Lat": "lat0", "Lng": "lng0"}"],
+		[...],
+		...
+	]
+}
