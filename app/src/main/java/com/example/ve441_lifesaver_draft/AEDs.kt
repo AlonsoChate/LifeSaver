@@ -1,6 +1,7 @@
 package com.example.ve441_lifesaver_draft
 
 import android.util.Log
+import android.widget.Toast
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

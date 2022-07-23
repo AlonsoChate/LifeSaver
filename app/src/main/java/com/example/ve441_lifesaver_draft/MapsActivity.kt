@@ -6,6 +6,8 @@ import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.ve441_lifesaver_draft.AEDStore.aeds
+import com.example.ve441_lifesaver_draft.AEDStore.getAEDs
 import com.example.ve441_lifesaver_draft.BuildConfig.MAPS_API_KEY
 
 import com.google.android.gms.maps.model.LatLng
@@ -82,7 +84,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         val getRouteButton = binding.buttonMapAction
         getRouteButton.setOnClickListener{
             println("Debug---------> Click get route")
-            getRoute()
+//            getRoute()
+
+            getAEDs()
+
+            for (i in 0 until
+                    aeds.size){
+                toast(aeds[i].toString())
+                toast("finish")
+            }
         }
     }
 
@@ -110,6 +120,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
 
     private fun getRoute(){
         println("Debug------> getRoute start")
+
+        toast("Start to get route, please wait ...")
+
         val request = Request.Builder()
             .url(getDirectionUrl())
             .build()
@@ -124,7 +137,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     var jRoutes : JSONArray? = null
-                    var jLegs : JSONArray? = null
                     var jSteps : JSONArray? = null
 
                     // get routes
@@ -134,15 +146,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
                     // prepare for add route
                     route.clear()
 
-                    jLegs = JSONObject(jRoutes!![0].toString()?:"").getJSONArray("legs")
-                    jSteps = JSONObject(jLegs!![0].toString()?:"").getJSONArray("steps")
+                    jSteps = JSONObject(
+                        JSONObject(
+                            jRoutes!![0].toString()?:""
+                        ).getJSONArray("legs")[0].toString()?:""
+                    ).getJSONArray("steps")
 
                     // start location
                     var stepEntry = jSteps[0] as JSONObject
                     var point = stepEntry.getJSONObject("start_location")
                     route.add(LatLng(point.getDouble("lat"), point.getDouble("lng")))
 
-                    for (i in 0 until  jSteps!!.length()){
+                    for (i in 0 until jSteps!!.length()){
                         stepEntry = jSteps[i] as JSONObject
                         point = stepEntry.getJSONObject("end_location")
                         route.add(LatLng(point.getDouble("lat"), point.getDouble("lng")))
@@ -203,7 +218,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15.0f))
     }
     private fun updateMapLocation(coordinate: LatLng?) {
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinate))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinate ?: LatLng(0.0, 0.0)))
 
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15.0f))
     }
