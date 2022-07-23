@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.ve441_lifesaver_draft.AEDStore.getAEDs
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

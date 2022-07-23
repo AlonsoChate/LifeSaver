@@ -1,16 +1,11 @@
 package com.example.ve441_lifesaver_draft
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.example.ve441_lifesaver_draft.BuildConfig.MAPS_API_KEY
 
 import com.google.android.gms.maps.model.LatLng
@@ -64,8 +59,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-//        getLocationPermission()
-
         // set to Hybrid
         GoogleMapOptions().mapType(GoogleMap.MAP_TYPE_HYBRID)
 
@@ -83,10 +76,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
             isZoomGesturesEnabled = true
         }
 
-        // add a marker at default start position
-        mMap.addMarker(MarkerOptions().position(start).title("Marker in BBB"))
-
-        // zoom in closer and move camera
+        // zoom in closer and move camera to default location
         updateMapLocation(start)
 
         val getRouteButton = binding.buttonMapAction
