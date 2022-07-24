@@ -16,6 +16,7 @@ import com.example.ve441_lifesaver_draft.databinding.ActivityMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.PolylineOptions
 import okhttp3.*
 import org.json.JSONArray
@@ -24,7 +25,7 @@ import org.json.JSONObject
 import java.io.IOException
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
-    GoogleMap.OnMyLocationButtonClickListener {
+    GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener{
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
@@ -67,9 +68,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         // enable location layer
         mMap.isMyLocationEnabled = true
         mMap.setOnMyLocationButtonClickListener(this)
-
-
 //        mMap.setOnMyLocationClickListener(this)
+        mMap.setOnMarkerClickListener(this)
 
 
         with(mMap.uiSettings){
@@ -81,18 +81,50 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         // zoom in closer and move camera to default location
         updateMapLocation(start)
 
+        initMap()
+    }
+
+
+    // called when the user clicks a marker
+    // https://developers.google.com/maps/documentation/android-sdk/marker?hl=zh-cn
+    override fun onMarkerClick(marker: Marker): Boolean {
+        val info = marker.tag as? String
+
+        toast("select!")
+
+        return false
+    }
+
+
+    // initialize buttons after onMapReady
+    private fun initMap() {
         val getRouteButton = binding.buttonMapAction
         getRouteButton.setOnClickListener{
             println("Debug---------> Click get route")
+
 //            getRoute()
 
+            // retrieve aeds from back end
             getAEDs()
 
-            for (i in 0 until
-                    aeds.size){
-                toast(aeds[i].toString())
-                toast("finish")
+            toast("Displaying aeds on the map ...")
+
+            // TODO: display aeds on the map with marker
+            for (i in 0 until aeds.size){
+                val coordinate = LatLng(
+                    aeds[i].location!!.getDouble("Lat"),
+                    aeds[i].location!!.getDouble("Lng")
+                )
+                var marker =
+                    mMap.addMarker(MarkerOptions()
+                        .position(coordinate)
+                        .title(aeds[i].id)
+                        .snippet(aeds[i].description))
+
+                // store the descriptin in the tag
+                marker?.tag = aeds[i].description
             }
+            toast(aeds.size.toString() + "aeds are found!")
         }
     }
 
