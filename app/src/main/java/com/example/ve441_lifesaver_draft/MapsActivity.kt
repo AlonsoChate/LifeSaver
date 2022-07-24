@@ -6,6 +6,7 @@ import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import com.example.ve441_lifesaver_draft.AEDStore.aeds
 import com.example.ve441_lifesaver_draft.AEDStore.getAEDs
 import com.example.ve441_lifesaver_draft.BuildConfig.MAPS_API_KEY
@@ -41,6 +42,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
 
     private val client = OkHttpClient()
 
+    private lateinit var mapButton: Button
+
+    private var isSelected = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -61,7 +66,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
+        mapButton = binding.buttonMapAction
         // set to Hybrid
         GoogleMapOptions().mapType(GoogleMap.MAP_TYPE_HYBRID)
 
@@ -88,43 +93,43 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
     // called when the user clicks a marker
     // https://developers.google.com/maps/documentation/android-sdk/marker?hl=zh-cn
     override fun onMarkerClick(marker: Marker): Boolean {
-        val info = marker.tag as? String
-
-        toast("select!")
-
+        mapButton.text = "Get Route"
+        end = marker.position
+        isSelected = true
         return false
     }
 
 
     // initialize buttons after onMapReady
     private fun initMap() {
-        val getRouteButton = binding.buttonMapAction
-        getRouteButton.setOnClickListener{
+        mapButton.setOnClickListener{
             println("Debug---------> Click get route")
 
-//            getRoute()
+            if (!isSelected){
+                mapButton.text = "Search AED"
 
-            // retrieve aeds from back end
-            getAEDs()
-
-            toast("Displaying aeds on the map ...")
-
-            // TODO: display aeds on the map with marker
-            for (i in 0 until aeds.size){
-                val coordinate = LatLng(
-                    aeds[i].location!!.getDouble("Lat"),
-                    aeds[i].location!!.getDouble("Lng")
-                )
-                var marker =
-                    mMap.addMarker(MarkerOptions()
-                        .position(coordinate)
-                        .title(aeds[i].id)
-                        .snippet(aeds[i].description))
-
-                // store the descriptin in the tag
-                marker?.tag = aeds[i].description
+                // retrieve aeds from back end
+                toast("Retrieving AEDs locations ... please wait")
+                getAEDs{runOnUiThread {
+                        for (i in 0 until aeds.size) {
+                            val coordinate = LatLng(
+                                aeds[i].location!!.getDouble("Lat"),
+                                aeds[i].location!!.getDouble("Lng"))
+                            var marker =
+                                mMap.addMarker(
+                                    MarkerOptions()
+                                        .position(coordinate)
+                                        .title(aeds[i].id)
+                                        .snippet(aeds[i].description)
+                                )
+                        // store the descriptin in the tag
+                        // marker?.tag = aeds[i].description
+                        }
+                        toast(aeds.size.toString() + "AEDs found!")
+                }}
+            }else{
+                getRoute()
             }
-            toast(aeds.size.toString() + "aeds are found!")
         }
     }
 

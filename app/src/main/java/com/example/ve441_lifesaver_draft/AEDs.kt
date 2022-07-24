@@ -21,9 +21,9 @@ object AEDStore{
     private val nFields = AEDs::class.declaredMemberProperties.size
 
     private val client = OkHttpClient()
-    private const val serverUrl = "https://10.0.0.102/"
+    private const val serverUrl = "https://18.191.46.9/"
 
-    fun getAEDs() {
+    fun getAEDs(completion: () -> Unit) {
         val request = Request.Builder()
             .url(serverUrl+"getAEDs/")
             .build()
@@ -52,8 +52,11 @@ object AEDStore{
                                     + " instead of " + nFields.toString())
                         }
                     }
+                    completion()
                 }
             }
         })
     }
+
+
 }
