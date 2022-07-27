@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.ve441_lifesaver_draft"
-        minSdk 21
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/INDEX.LIST'
     }
     buildFeatures {
         viewBinding true
@@ -52,4 +56,28 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
     implementation 'com.google.android.gms:play-services-location:20.0.0'
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.10"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.2'
+
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.3.1'
+
+
+    // Google Cloud Vision API via REST.
+    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+
+    // MLKit
+    implementation 'com.google.mlkit:object-detection:16.2.3'
+    implementation 'com.google.mlkit:object-detection-custom:16.3.1'
+
+    // ARCore (Google Play Services for AR) library.
+    implementation 'com.google.ar:core:1.32.0'
+
+    // Obj - a simple Wavefront OBJ file loader
+    // https://github.com/javagl/Obj
+    implementation 'de.javagl:obj:0.2.1'
 }

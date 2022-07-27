@@ -10,6 +10,7 @@ class CPRs2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cprs2)
     }
+    fun startAR(view: View?) = startActivity(Intent(this, ARActivity::class.java))
     fun returnHome(view: View?) = startActivity(Intent(this, MainActivity::class.java))
     fun nextPage(view: View?) = startActivity(Intent(this, CPRs3Activity::class.java))
     fun prevPage(view: View?) = startActivity(Intent(this, CPRs1Activity::class.java))
