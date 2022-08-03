@@ -26,7 +26,7 @@ VE441 group project source
 ![Storymap figure2](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/Storymap2.png)
 
 ## Engine Architecture
-![Engine Architecture](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/EngineArchitecture.png)
+![Engine Architecture](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/LifeSaver%20Model%20and%20Engine.png)
 
 While users click any button in the front end, the Main Activity will be activated. Based on the different action by users, Main Activity make requests to different handlers. If the request is to show an AR CPR, Main Activity will activate AR Handler and AR Handler will make requests to AR Core to retrieve the response. If the request is to navigate, Main Activity will first make requests to Back End to retrieve AED locations from DB and second activate Map Handler to make requests to Baidu Map API to retrieve the route. The map handler directly deals with the BaiduMap API, which feeds user location into the API and receives the navigation information. When using AR navigation, the map handler calls ARCore to display AR navigation view. The DB (database) is used for storing `user profiles` and `AED locations`. `user profiles` include users' personal health conditions, emergency contacts, and personal information. `AED locations` are stored in the form API requires.
 
