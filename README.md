@@ -71,7 +71,7 @@ While users click any button in the front end, the Main Activity will be activat
 ![UIUX Justification](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_justification.png)
 
 ## Individual Contribution
-## Lan Zhang, Yiteng Cai, Jiaai Xu, and Yuyuan Ji have offline meetings. We often tried to realize and debugged the functions individually and used only one team member's labtop to develop the final product. So some of the members may not have the git commit repos to the code. The specific division of work are listed as below. If two team members completed the same task (like Jiaai Xu and Yuyuan Ji), they shared the same effort.
+Lan Zhang, Yiteng Cai, Jiaai Xu, and Yuyuan Ji have offline meetings. We often tried to realize and debugged the functions individually and used only one team member's labtop to develop the final product. So some of the members may not have the git commit repos to the code. The specific division of work are listed as below. If two team members completed the same task (like Jiaai Xu and Yuyuan Ji), they shared the same effort.
 **Lan Zhang**: Complete the display of route function. Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Help with ar function.\
 **Yiteng Cai**: Configure Google map fragment setting. Implement function to get current location. Retrieve route info from origin and destination, and display route on the map.\
 **Jiaai Xu**: Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code.\
