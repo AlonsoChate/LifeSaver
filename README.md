@@ -1,15 +1,51 @@
 # LifeSaver
 VE441 group project source 
 
-## Documentation
-> link to all 3rd-party tools, libraries, SDKs, APIs
 
-### Front-end dependencies
+
+
+
+## Getting Started: how to build and run our project
+### Front-end part
+You will need two API keys to activate google map API and google ARcore cloud AR service. To activate google maps API, you need to add a key to your `local.properties` file, like the following example.
+  ```
+  MAPS_API_KEY=AIzaSyAed11pVL9JPm-0TXGhHChmV6TcyXeyEJo
+  ```
+Our key will soon get expired, you can also get a new key following the procedure here [get-api-key.](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
+
+As for ARcore cloud service, for simplicity, you can replace line 74 `val apiKey = ...` of file [`AppRenderer.kt`](https://github.com/AlonsoChate/LifeSaver/blob/main/app/src/main/java/com/example/ve441_lifesaver_draft/kotlin/ml/AppRenderer.kt) with your API key, like this
+  ```
+  val apiKey = AIzaSyBFthFwiCC3O6a6nfEuEkIToRz-m9krFTs
+  ```
+To enable http communication between front-end and back-end, you will need to install a self-signed CA certificate on your mobile phone. Download the our certificate `selfsigned.crt` from our back-end repo [LifeSaver BackEnd](https://github.com/lanzhgx/LifeSaver_Backend) and install it on your phone, or you can use your own certificate on your own server following the instructions on Back-end part.
+
+
+### Back-end part
+Our back-end is a modified version of the back-end used in lab. You can refer to the links below to know how to set up a server, how to configure your PostgreSQL database, and how to create and use your own CA certificate.
+
+[lab1-chatter](https://eecs441.eecs.umich.edu/ji-asns/lab1-chatter), [lab2-chatter-with-images](https://eecs441.eecs.umich.edu/ji-asns/lab2-images)
+
+As for the PostgreSQL database, you will need to configure the table with the command below
+  ```
+  CREATE TABLE aeds (id varchar(255), description varchar(255), location json);
+  ```
+and insert your values in this way
+  ```
+  INSERT INTO aeds VALUES ('test_aed0', 'Hello world', '{"Lat": "0.0", "Lng": "0.0"}');
+  ```
+
+As for the coding part in our server, you can refer to our [Backend repo](https://github.com/lanzhgx/LifeSaver_Backend). What's different from lab is that you need to set up the `getAED()` function in `app/views.py` and add the corresponding path in `routing/urls`.
+
+
+### Dependencies
+These are links to all 3rd-party tools, libraries, SDKs, APIs our project relies on directly.
+
+#### Front-end dependencies
 - [Google Maps](https://developers.google.com/maps/documentation)
 - [Google ARCore](https://developers.google.com/ar/develop?hl=zh-cn)
 - [OkHttp](https://github.com/square/okhttp)
 
-### Back-end dependencies
+#### Back-end dependencies
 - [Python 3.8](https://www.python.org/downloads/)
 - [PostgreSQL (Latest Version)](https://www.postgresql.org/docs/current/index.html)
 - [Nginx (Latest Version)](https://nginx.org/en/docs/install.html)
@@ -17,17 +53,9 @@ VE441 group project source
 - [Gunicorn (Latest Version)](https://pypi.org/project/gunicorn/)
 
 
-## Getting Started: how to build and run our project
-You will need two API keys to activate google map API and google ARcore cloud AR service. To activate google maps API, you need to add a key to your `local.properties` file, like the following example.
-  ```
-  MAPS_API_KEY=AIzaSyAed11pVL9JPm-0TXGhHChmV6TcyXeyEJo
-  ```
-Our key will soon get expired, you can also get a new key following the procedure here [get-api-key.](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
 
-As for ARcore cloud service, for simplicity, you can replace line 74 `val apiKey = ...` of file (`AppRenderer.kt`](https://github.com/AlonsoChate/LifeSaver/blob/main/app/src/main/java/com/example/ve441_lifesaver_draft/kotlin/ml/AppRenderer.kt) with your API key, like this
-  ```
-  val apiKey = "AIzaSyBFthFwiCC3O6a6nfEuEkIToRz-m9krFTs
-  ```
+
+
 
 ## Model and Engine
 ## Storymap
