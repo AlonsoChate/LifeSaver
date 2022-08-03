@@ -3,22 +3,31 @@ VE441 group project source
 
 ## Documentation
 > link to all 3rd-party tools, libraries, SDKs, APIs
+
 ### Front-end dependencies
-- [Google Maps](https://developers.google.com/maps/documentation)\
-  To activate google maps api, you need to add a key to your local.properties. This key need to be deleted when we launch the project.
-  ```
-  MAPS_API_KEY=AIzaSyAed11pVL9JPm-0TXGhHChmV6TcyXeyEJo
-  ```
+- [Google Maps](https://developers.google.com/maps/documentation)
 - [Google ARCore](https://developers.google.com/ar/develop?hl=zh-cn)
-- [EastAR](https://www.easyar.com/view/support.html)
-- [OpenCV4Android](https://docs.opencv.org/3.4/d9/d3f/tutorial_android_dev_intro.html)
 - [OkHttp](https://github.com/square/okhttp)
+
 ### Back-end dependencies
 - [Python 3.8](https://www.python.org/downloads/)
 - [PostgreSQL (Latest Version)](https://www.postgresql.org/docs/current/index.html)
 - [Nginx (Latest Version)](https://nginx.org/en/docs/install.html)
 - [Django 3.1.3](https://pypi.org/project/Django/)
 - [Gunicorn (Latest Version)](https://pypi.org/project/gunicorn/)
+
+
+## Getting Started: how to build and run our project
+You will need two API keys to activate google map API and google ARcore cloud AR service. To activate google maps API, you need to add a key to your `local.properties` file, like the following example.
+  ```
+  MAPS_API_KEY=AIzaSyAed11pVL9JPm-0TXGhHChmV6TcyXeyEJo
+  ```
+Our key will soon get expired, you can also get a new key following the procedure here [get-api-key.](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
+
+As for ARcore cloud service, for simplicity, you can replace line 74 `val apiKey = ...` of file (`AppRenderer.kt`](https://github.com/AlonsoChate/LifeSaver/blob/main/app/src/main/java/com/example/ve441_lifesaver_draft/kotlin/ml/AppRenderer.kt) with your API key, like this
+  ```
+  val apiKey = "AIzaSyBFthFwiCC3O6a6nfEuEkIToRz-m9krFTs
+  ```
 
 ## Model and Engine
 ## Storymap
