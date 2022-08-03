@@ -70,20 +70,21 @@ While users click any button in the front end, the Main Activity will be activat
 ![UIUX-CPR Guide](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_cpr.png)
 ![UIUX Justification](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_justification.png)
 
+## Individual Contribution
+## Lan Zhang, Yiteng Cai, Jiaai Xu, and Yuyuan Ji have offline meetings. We often tried to realize and debugged the functions individually and used only one team member's labtop to develop the final product. So some of the members may not have the git commit repos to the code. The specific division of work are listed as below. If two team members completed the same task (like Jiaai Xu and Yuyuan Ji), they shared the same effort.
+**Lan Zhang**: Complete the display of route function. Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Help with ar function.\
+**Yiteng Cai**: Configure Google map fragment setting. Implement function to get current location. Retrieve route info from origin and destination, and display route on the map.\
+**Jiaai Xu**: Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code.\
+**Yuyuan Ji**: Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code.\
+**Kehan Chen**: Add the CPR text and image guide.\
+
+
 ## Team Roster
 | Team Member | Contribution |
 | :--- | :--- |
-| Jiaai Xu    | App construction, add google Maps API |
-| Kehan Chen  | Add CPR guide |
 | Lan Zhang   | Display route function, app construction, add google Maps API |
-| Wanying Ji  |  |
-| Yiteng Cai  | Configure google map setting. Display route function |
-| Yuyuan Ji   | App construction, add google Maps API |
+| Yiteng Cai  | Configure google map setting, display route function, migrate the ar code to the main app |
+| Jiaai Xu    | App construction, add google Maps API, realize ar function, add machine learning model to ar identify chest position |
+| Yuyuan Ji   | App construction, add google Maps API, realize ar function, add machine learning model to ar identify chest position |
+| Kehan Chen  | Add CPR guide |
 
-## Individual Contribution
-**Jiaai Xu**: Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.\
-**Yuyuan Ji**: Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.\
-**Lan Zhang**: Complete the display of route function. Build the overall app structure (add and link the buttons and pages). Add and the Google Maps API to app.\
-**Yiteng Cai**: Configure Google map fragment setting. Implement function to get current location. Retrieve route info from origin and destination, and display route on the map.\
-**Kehan Chen**: Add the CPR text and image guide.\
-**P.S.** Since we have offline meetings, we sometimes use only one team member's labtop to develop the final product. So some of the members may not have the git commit repos to the code.
