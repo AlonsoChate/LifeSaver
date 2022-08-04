@@ -11,13 +11,13 @@ You will need two API keys to activate google map API and google ARcore cloud AR
   ```
   MAPS_API_KEY=AIzaSyAed11pVL9JPm-0TXGhHChmV6TcyXeyEJo
   ```
-Our key will soon get expired, you can also get a new key following the procedure here [get-api-key.](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
-
 As for ARcore cloud service, for simplicity, you can replace line 74 `val apiKey = ...` of file [`AppRenderer.kt`](https://github.com/AlonsoChate/LifeSaver/blob/main/app/src/main/java/com/example/ve441_lifesaver_draft/kotlin/ml/AppRenderer.kt) with your API key, like this
   ```
   val apiKey = AIzaSyBFthFwiCC3O6a6nfEuEkIToRz-m9krFTs
   ```
-To enable http communication between front-end and back-end, you will need to install a self-signed CA certificate on your mobile phone. Download the our certificate `selfsigned.crt` from our back-end repo [LifeSaver BackEnd](https://github.com/lanzhgx/LifeSaver_Backend) and install it on your phone, or you can use your own certificate on your own server following the instructions on Back-end part.
+Our key will soon get expired, you can also get a new key following the procedure here [get-api-key](https://developers.google.com/maps/documentation/android-sdk/get-api-key) for Google map API and [here](https://cloud.google.com/vision/docs/setup) for Google ARcore.
+
+To enable http communication between front-end and back-end, you will need to install a self-signed CA certificate on your mobile phone. Download the our certificate `selfsigned.crt` from our back-end repo [LifeSaver BackEnd](https://github.com/lanzhgx/LifeSaver_Backend) and install it on your phone, or you can use your own certificate on your own server.
 
 
 ### Back-end part
