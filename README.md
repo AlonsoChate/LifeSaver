@@ -92,9 +92,11 @@ In our app we need to post a `GET` request to the endpoint `/getAEDs/`. Our `get
 }
 ```
 
-### Google Map SDK
-Google map is enabled with a API Key. We mainly utilize Google map SDK to display a map fragment in our map. We also use a Google map direction API to retrieve the route information from one location to another. A URL request consists of the origin and destination coordinate together with the API key is send to the Google map API endpoint `https://maps.googleapis.com/maps/api/directions/`, and the route info is returned as a JSON object. Detail information can be looked up [here](https://developers.google.com/maps/documentation/directions/get-directions). 
+### Google Maps SDK
+Google maps is enabled with a API Key. We mainly utilize Google map SDK to display a map fragment in our map. We also use a Google map direction API to retrieve the route information from one location to another. A URL request consists of the origin and destination coordinate together with the API key is send to the Google map API endpoint `https://maps.googleapis.com/maps/api/directions/`, and the route info is returned as a JSON object. Detail information can be looked up [here](https://developers.google.com/maps/documentation/directions/get-directions). 
 
+### Google AR Core SDK
+We mainly utilize Google AR Core SDK to construct AR structure and to detect people's chest to be pressed during CPR. To retrieve the location of chest from Google's machine learning algorithms, we send a URL request, which consists of the preprocessed images, together with the API key to the endpoint `https://vision.googleapis.com/v1/images:annotate?key=$apiKey`, then the detection result is returned as a JSON objext. Detail information about the returned JSON can be found [here](https://cloud.google.com/vision/docs/reference/rest/v1/AnnotateImageResponse#LocalizedObjectAnnotation). Detail information about using custom model can be found [here](https://developers.google.com/ml-kit/vision/object-detection/custom-models/android).
 
 
 ## View UI/UX
