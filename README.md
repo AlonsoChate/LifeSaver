@@ -68,16 +68,6 @@ These are links to all 3rd-party tools, libraries, SDKs, APIs our project relies
 While users click any button in the front end, the Main Activity will be activated. Based on the different action by users, Main Activity make requests to different handlers. If the request is to show an AR CPR, Main Activity will activate AR Handler and AR Handler will make requests to AR Core to retrieve the response. If the request is to navigate, Main Activity will first make requests to Back End to retrieve AED locations from DB and second activate Map Handler to make requests to Baidu Map API to retrieve the route. The map handler directly deals with the BaiduMap API, which feeds user location into the API and receives the navigation information. When using AR navigation, the map handler calls ARCore to display AR navigation view. The DB (database) is used for storing `user profiles` and `AED locations`. `user profiles` include users' personal health conditions, emergency contacts, and personal information. `AED locations` are stored in the form API requires.
 
 ## APIs and Controller
-- Front End and Back End, using Okhttp
-  - Send user profile and location
-  - Retrieve several nearest AED locations
-- Front End and Baidu Map, using Baidu Map API
-  - Send user location and AED locations
-  - Retrieve the route and displayable map
-- Front End and Position Sensors, using [in-built Android API](https://developer.android.com/guide/topics/sensors/sensors_position)
-  - Retrieve the device's orientation
-- Front End and AR Module, using Google ARCore
-
 ### Endpoint: `GET /getAEDs/`
 **Response Codes**
 | Code  | Description |
