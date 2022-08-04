@@ -78,16 +78,7 @@ While users click any button in the front end, the Main Activity will be activat
   - Retrieve the device's orientation
 - Front End and AR Module, using Google ARCore
 
-### Endpoint: `GET /lifesaver/`
-
-**Request Parameters**
-| Key  | Location | Type  |Description  |
-| :--- | :--- | :---  | :--- |
-| username | Session Cookie | String | Current user | 
-| password | Session Cookie | String | hash of password | 
-| userinfo | JSON | List of dictionary | Lisf of user info with keys and values |
-| location  | JSON |  | GPS location info |
-
+### Endpoint: `GET /getAEDs/`
 **Response Codes**
 | Code  | Description |
 | :--- | :--- |
@@ -95,9 +86,23 @@ While users click any button in the front end, the Main Activity will be activat
 | `400 Bad ` | Invalid parameters |
 
 **Returns**
-| Key  | Location | Type  |Description  |
+| Key  | Value | Type  |Description  |
 | :--- | :--- | :---  | :--- |
-| AEDinfo | JSON | list of dictionary | Detail info of nearby AEDs including location, appearence(photo), maintanance, etc | 
+| AEDs | JSON | list of dictionary | Detail info of nearby AEDs including device id, description and location | 
+
+In our app we need to post a `GET` request to the endpoint `/getAEDs/`. Our `getAEDs` API will send back the informations of AEDs in the form of a JSON object with the key being "AEDs" and the value being an array of string arrays. The first two strings are the id and description of the AED, and the last one is another JSON object consists the coordinate. For example: 
+```
+{
+  "AEDs": [
+      ["id0", "description0", "{"Lat": "0.0", "Lng": "0.0"}"], 
+      [...],
+      ...
+  ]
+}
+```
+
+### Google Map SDK
+Google map is enabled with a API Key. We mainly utilize Google map SDK to display a map fragment in our map. We also use a Google map direction API to retrieve the route information from one location to another. A URL request consists of the origin and destination coordinate together with the API key is send to the Google map API endpoint `https://maps.googleapis.com/maps/api/directions/`, and the route info is returned as a JSON object. Detail information can be looked up [here](https://developers.google.com/maps/documentation/directions/get-directions). 
 
 
 
