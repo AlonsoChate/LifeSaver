@@ -116,23 +116,13 @@ In CPR Guide function, previously, too many words in text guidance made users fe
 In AR camera, we changed the destination of the `RETURN` button from the main menu to the previous page.
 
 
-
-## Individual Contribution
-Lan Zhang, Yiteng Cai, Jiaai Xu, and Yuyuan Ji have offline meetings. We often tried to realize and debugged the functions individually and used only one team member's laptop to develop the final product. So some of the members may not have the git commit repos to the code. The specific division of work are listed as below. If two team members completed the same task (like Jiaai Xu and Yuyuan Ji), they shared the same effort.
-
-**Lan Zhang**: Complete the display of route function. Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Help with ar function.\
-**Yiteng Cai**: Configure Google map fragment setting. Implement function to get current location. Retrieve route info from origin and destination, and display route on the map.\
-**Jiaai Xu**: Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code.\
-**Yuyuan Ji**: Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code.\
-**Kehan Chen**: Add the CPR text and image guide.\
-
-
 ## Team Roster
+Lan Zhang, Yiteng Cai, Jiaai Xu, and Yuyuan Ji have offline meetings. We often tried to realize and debugged the functions individually and used only one team member's laptop to develop the final product. So some of the members may not have the git commit repos to the code. The specific division of work are listed as below. If several team members completed the same task (like Jiaai Xu and Yuyuan Ji), they shared the same effort.
 | Team Member | Contribution |
 | :--- | :--- |
 | Lan Zhang   | Display route function, app construction, add google Maps API |
 | Yiteng Cai  | Configure google map setting, display route function, migrate the ar code to the main app |
-| Jiaai Xu    | App construction, add google Maps API, realize ar function, add machine learning model to ar identify chest position |
-| Yuyuan Ji   | App construction, add google Maps API, realize ar function, add machine learning model to ar identify chest position |
-| Kehan Chen  | Add CPR guide |
+| Jiaai Xu    | Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code. |
+| Yuyuan Ji   | Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code. |
+| Kehan Chen  | Add the CPR text and image guide. |
 
