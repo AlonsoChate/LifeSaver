@@ -65,7 +65,8 @@ These are links to all 3rd-party tools, libraries, SDKs, APIs our project relies
 ## Engine Architecture
 ![Engine Architecture](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/LifeSaver%20Model%20and%20Engine.png)
 
-While users click any button in the front end, the Main Activity will be activated. Based on the different action by users, Main Activity make requests to different handlers. If the request is to show an AR CPR, Main Activity will activate AR Handler and AR Handler will make requests to AR Core to retrieve the response. If the request is to navigate, Main Activity will first make requests to Back End to retrieve AED locations from DB and second activate Map Handler to make requests to Baidu Map API to retrieve the route. The map handler directly deals with the BaiduMap API, which feeds user location into the API and receives the navigation information. When using AR navigation, the map handler calls ARCore to display AR navigation view. The DB (database) is used for storing `user profiles` and `AED locations`. `user profiles` include users' personal health conditions, emergency contacts, and personal information. `AED locations` are stored in the form API requires.
+While users click any button in the front end, the corresponding activity will be activated. Based on the different actions by users, the activity makes requests to different handlers. If the request is to show an AR CPR, AR Activity will activate AR Handler and AR Handler will make requests to Google AR Core to retrieve the response. If the request is to navigate, Map Activity will activate Map Handler which will make requests to Back End to retrieve AED locations and make requests to Google Maps API to retrieve the route.
+
 
 ## APIs and Controller
 ### Endpoint: `GET /getAEDs/`
