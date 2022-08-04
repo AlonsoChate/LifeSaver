@@ -121,7 +121,7 @@ Lan Zhang, Yiteng Cai, Jiaai Xu, and Yuyuan Ji have offline meetings. We often t
 | Team Member | Contribution |
 | :--- | :--- |
 | Lan Zhang   | Implement the front end view, including main activity and car text guide activity. Embed Google Maps fragment into our map activity. Implement the back end server and database. |
-| Yiteng Cai  | Configure google map setting, display route function, migrate the ar code to the main app |
+| Yiteng Cai  | Mainly work on Map Activity. Configure Google map setting. Implement function to get current location. Retrieve route info from origin and destination, and display route on the map. Configure the back end to send-back AED info if requested. Migrate AR code to the main app.  |
 | Jiaai Xu    | Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code. |
 | Yuyuan Ji   | Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code. |
 | Kehan Chen  | Add the CPR text and image guide. |
