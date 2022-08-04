@@ -100,10 +100,22 @@ We mainly utilize Google AR Core SDK to construct AR structure and to detect peo
 
 
 ## View UI/UX
+### UI/UX Flow
 ![UIUX Flow](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiuxflow.png)
+### Navigation
 ![UIUX-Navigation](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_navigation.png)
+After clicking on `AED MAPS` on the main menu, users can get their current location by clicking on the radar icon on Pic 2 and see nearby AEDs by clicking on `SEARCH AED` in Pic 3. AEDs will be marked red, and when clicking on each AED, users will see its description. The route from user’s current location to the chosen AED, which is a blue curve, will be displayed if users select one AED and click on `GET ROUTE`. By clicking on the icon at the bottom right corner in Pic 6, the navigation will be started. Users will see their real-time location change and get real-time directions.
+### CPR Guide
 ![UIUX-CPR Guide](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_cpr.png)
-![UIUX Justification](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_justification.png)
+After clicking on `CPR GUIDES` on the main menu, detailed steps of CPR guidance will be shown. Users can go through these steps by clicking on `NEXT STEP` or `PREVIOUS STEP`. When giving chest compression (Step 2 in Pic 3), users can hit the camera icon on the top right corner to get AR guide on finding the correct chest compression position. In the camera interface as shown in Pic 6, make sure the person is in the shot, then hit `SCAN`, a red `press` will appear at the chest compression position.
+### Design Decision Justification
+<!--![UIUX Justification](https://github.com/AlonsoChate/LifeSaver/blob/main/figures/uiux_justification.png)-->
+In Navigation function, we changed the destination of the back arrow from the main menu to the previous page. Previously, users will return to the main menu after clicking the back arrow. According to the mockup usability test results, they think this design is not easy to use. After our modification, now they will return to the previous pages after clicking the back arrow. This makes our design less confusing and more convenient.
+
+In CPR Guide function, previously, too many words in text guidance made users feel streesed. Now we make the text guidance more concise so that users can read it more easily. We also added image guidance on 2 critical steps in CPR to make it more intuitive. Besides, we changed the back buttons on the upper left corner to home buttons to make it less confusing. Now users use `NEXT STEP` and `PREVIOUS STEP` to read through CPR guidance, and use home button to return to the main menu.
+In AR camera, we changed the destination of the `RETURN` button from the main menu to the previous page.
+
+
 
 ## Individual Contribution
 Lan Zhang, Yiteng Cai, Jiaai Xu, and Yuyuan Ji have offline meetings. We often tried to realize and debugged the functions individually and used only one team member's labtop to develop the final product. So some of the members may not have the git commit repos to the code. The specific division of work are listed as below. If two team members completed the same task (like Jiaai Xu and Yuyuan Ji), they shared the same effort.
