@@ -120,7 +120,7 @@ In AR camera, we changed the destination of the `RETURN` button from the main me
 Lan Zhang, Yiteng Cai, Jiaai Xu, and Yuyuan Ji have offline meetings. We often tried to realize and debugged the functions individually and used only one team member's laptop to develop the final product. So some of the members may not have the git commit repos to the code. The specific division of work are listed as below. If several team members completed the same task (like Jiaai Xu and Yuyuan Ji), they shared the same effort.
 | Team Member | Contribution |
 | :--- | :--- |
-| Lan Zhang   | Display route function, app construction, add google Maps API |
+| Lan Zhang   | Implement the front end view, including main activity and car text guide activity. Embed Google Maps fragment into our map activity. Implement the back end server and database. |
 | Yiteng Cai  | Configure google map setting, display route function, migrate the ar code to the main app |
 | Jiaai Xu    | Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code. |
 | Yuyuan Ji   | Build the overall app structure (add and link the buttons and pages). Add the Google Maps API to app. Realize ar function. Add machine learning model to ar identify chest position. Help with the migration of code. |
